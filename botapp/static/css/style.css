@@ -1,0 +1,9 @@
+body {
+	font-family: cursive;
+
+}
+
+.card {
+	width: 18rem;
+	border: 4mm ridge rgba(197, 220, 230, .4);
+}
