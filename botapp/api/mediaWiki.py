@@ -7,7 +7,8 @@ raisonnement :
 request me permet d'envoyer une requete à l'api médiawiki
 l'api propose différente recherche en fonction du mot ou de la 
 chaine de caractère passé. Je choisi la première page de recherche
-et j'envoi une deuxième requete à l'api pour analyser la page.
+et j'envoi une deuxième requete à l'api pour analyser et récuperer
+un extrait de la page.
 
 """ 
 
@@ -26,6 +27,7 @@ class MediaWiki():
 							'format': 'json',
 							'exintro': 'true',
 							'explaintext': 'true',
+							'exsentences': 3,
 							'redirects': 1,
 							'titles': self.query}
 
@@ -52,10 +54,9 @@ class MediaWiki():
 		stringList = string.split()
 		# print(stringList)
 		for item in stringList:
-			if item != '.':
-				listOfItem.append(item)
-		sentence = ' '.join(listOfItem)
-		print(sentence)
+			listOfItem.append(item)
+		sentences = ' '.join(listOfItem)
+		print(sentences)
 
 
 	def extractQuery(self, request):
