@@ -3,6 +3,20 @@ body {
 
 }
 
+form.forms {
+
+	margin-left: 400px;
+    margin-right: 400px;
+
+}
+
+.user--text {
+
+	width: 400px;
+	height: 100px;
+	text-align: center;
+}
+
 .card {
 	width: 18rem;
 	border: 4mm ridge rgba(197, 220, 230, .4);
