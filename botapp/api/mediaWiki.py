@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+# coding : utf-8
 import requests 
 import pprint
 
@@ -47,16 +49,6 @@ class MediaWiki():
 		title = responses['query']['search'][0]['title']	
 		return title
 
-	def transformInText(self, string):
-
-		sentence = []
-		listOfItem = []
-		stringList = string.split()
-		# print(stringList)
-		for item in stringList:
-			listOfItem.append(item)
-		sentences = ' '.join(listOfItem)
-		print(sentences)
 
 
 	def extractQuery(self, request):
@@ -69,7 +61,7 @@ class MediaWiki():
 		result = responses["query"]["pages"]
 		extract_list = list(result.values())
 		extract = extract_list[0]['extract']
-		self.transformInText(extract)
+		print(type(extract))
 		return extract
 
 
@@ -78,9 +70,9 @@ class MediaWiki():
 		
 
 
-wiki = MediaWiki()
+# wiki = MediaWiki()
 
-wiki.extractQuery(input("Entrer votre requête : "))
+# wiki.extractQuery(input("Entrer votre requête : "))
 
 
 
