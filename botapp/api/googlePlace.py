@@ -1,9 +1,10 @@
 #! /usr/bin/env python
 # coding : utf-8
 import requests
+import config
 from botapp.api import stopwords as s
 
-API_KEY =  "AIzaSyBOEx1K3m9nOvgS0UcG_fapvRrVvSWqmxk"
+
 
 class GooglePlace():
 
@@ -15,7 +16,7 @@ class GooglePlace():
 						"inputtype" : "textquery",
 						"language" : "fr",
 						"fields" : "formatted_address,geometry",
-						"key" : API_KEY}
+						"key" : config.API_KEY}
 
 	def parseText(self, request):
 		parseRequet = request.split()
