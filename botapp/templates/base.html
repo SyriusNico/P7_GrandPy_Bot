@@ -9,24 +9,34 @@
 	<title>GrandPy Bot</title>
 </head>
 <body>
-<div class="box container">
-	<div class="box logo">
-		<img class="picture_logo" src="static/image/papybot.png">
-		<a color="black" href="http://localhost:5000/"><h2>ACCUEIL</h2></a>	
+	<div class="navbar">
+		<div class="box logo">
+			<img class="picture_logo" src="static/image/papybot.png">
+			<img class="picture_papy" id="papy" src="static/image/grandpa.png">
+		</div>
+  		<a href="http://localhost:5000/" id="home"><p>ACCUEIL</p></a>
 	</div>
-	<header class="box header">
-		<h1>"Je pense qu'il est temps que tu saches ce qu'il s'est réellement passé. Tout commença, il y a fort longtemps, dans une lointaine contrée à l'est. Une contrée comme on en trouve pas dans le monde d'aujourd'hui."</h1>
-	</header>
-	
-	
-	{% block content%}
-	{% endblock%}
+	<!-- block used for grid -->
+	<div class="box container">
+		<header class="box header">
+			<h2>"Je pense qu'il est temps que tu saches ce qu'il s'est réellement passé. Tout commença, il y a fort longtemps, dans une lointaine contrée à l'est. Une contrée comme on en trouve pas dans le monde d'aujourd'hui."</h2>
+		</header>
+		{% block content%}
+		{% endblock%}
+		<div class="card">
+			<img class="picture_logo" src="static/image/grandpa.png">
+			<h2>L'endroit que tu cherches se trouve ici :</h2>
+			<div id="map"></div>
+		</div>
+		<footer class="box footer">
+			<h2>Pierre-Nicolas Schleicher</h2>
+			<a href="https://github.com/SyriusNico/P7_GrandPy_Bot.git">Github</a>
+		</footer>
 	</div>
 </div>
+<!-- some scripts to use jQuery and google api's -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOEx1K3m9nOvgS0UcG_fapvRrVvSWqmxk&callback=initMap"></script>
 </body>
-	<footer class="box footer">
-		<h5>Pierre-Nicolas Schleicher</h5>
-		<a href="https://github.com/SyriusNico/P7_GrandPy_Bot.git">Github</a>
-	</footer>
-</div>
 </html>

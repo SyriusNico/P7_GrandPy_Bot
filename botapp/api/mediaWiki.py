@@ -2,17 +2,7 @@
 # coding : utf-8
 import requests 
 import pprint
-
-"""
-raisonnement :
-
-request me permet d'envoyer une requete à l'api médiawiki
-l'api propose différente recherche en fonction du mot ou de la 
-chaine de caractère passé. Je choisi la première page de recherche
-et j'envoi une deuxième requete à l'api pour analyser et récuperer
-un extrait de la page.
-
-""" 
+import botapp.api.stopwords as s
 
 class MediaWiki():
 
@@ -33,47 +23,46 @@ class MediaWiki():
 							'redirects': 1,
 							'titles': self.query}
 
+
+
+	def parseText(self, request):
+
+		parseRequet = request.split()
+		text = ' '.join([word for word in parseRequet if word not in s.stopwords])
+		return text
+
+
 	def __setQuery(self, string):
 		"""
 		set user search
 		"""
-		self.query = string
+		self.query = newString = self.parseText(string)
 		return self.query
+
 
 	def sendQuery(self, request):
 
 		self.__setQuery(request)
 		self.queryParams['srsearch'] = self.query
 		req = requests.get(self.url, self.queryParams)
-		responses = req.json()
-		title = responses['query']['search'][0]['title']	
-		return title
+		responses = req.json()['query']['search'][0]['title']
+		return responses
 
 
 
 	def extractQuery(self, request):
 
-		self.__setQuery(request)
-		title = self.sendQuery(request)
-		self.extractParams['titles'] = title
-		req = requests.get(self.url, self.extractParams)
-		responses = req.json()
-		result = responses["query"]["pages"]
-		extract_list = list(result.values())
-		extract = extract_list[0]['extract']
-		print(type(extract))
-		return extract
-
-
-
-		
-		
-
-
-# wiki = MediaWiki()
-
-# wiki.extractQuery(input("Entrer votre requête : "))
-
-
-
-# TODO : API GOOGLE
+		try:
+			self.__setQuery(request)
+			title = self.sendQuery(request)
+			self.extractParams['titles'] = title
+			req = requests.get(self.url, self.extractParams)
+			responses = req.json()["query"]["pages"]
+			extract = list(responses.values())[0]['extract']
+			return extract
+		except:
+			return "Bon ok ok ! Je n'ai pas d'anecdote sur cet endroit \
+			mais aujourd’hui, et bien c’est le jour de mon 111e anniversaire ! \
+			Je ne connais pas la moitié d’entre vous autant que je le voudrais, \
+			mais j’aime moins la moitié d’entre \
+			vous à moitié moins que vous ne le méritez !"

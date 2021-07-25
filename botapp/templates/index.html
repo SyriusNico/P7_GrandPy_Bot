@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 		  	
 {% block content %}
-
+	<!-- contains the field to ask a question and the answer of papyBot -->
 	<div class="box content">
 		<div class="query">
-			<h1>Bonjour qu'est-ce que je peux faire pour toi ? </h1>
-			<form for="query" action="http://localhost:5000/result" method="post">
-				<label>
-					<br>
-					<input type="search" name="query" id="query" size="40">
-					<input type="submit" value="valider" >
-				</label>
+			<form id="query--form" action="/">
+				<p>
+					<label for="question"><h1>Que voulais-tu me demander ?</h1></label>
+					<input type="search" name="question" id="questionInput" size="40" placeholder="Pose ta question ici">
+					<input type="submit" value="valider" id='validate'>
+				</p>
 			</form>	
-		</div>	
+		</div>
+		<div class="result"></div>
+	</div>
 {% endblock %}

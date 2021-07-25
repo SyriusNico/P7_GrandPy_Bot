@@ -1,23 +1,22 @@
 #! /usr/bin/env python
 # coding : utf-8
-from flask import Flask , render_template, request, url_for
-from . import app
+from flask import Flask , render_template, request, url_for, jsonify
 from botapp.api import mediaWiki as m
-from botapp.api import here as h
+from botapp.api import googlePlace as g
+
+app = Flask(__name__)
 
 @app.route("/")
 def index():
     return render_template('index.html')
 
-@app.route("/result", methods=['GET', 'POST'])
+@app.route("/", methods=['POST'])
 def result():   
     wiki = m.MediaWiki()
-    here = h.HereApi()
-    req = request.form
-    reqToApi = req['query']
-    address = here.sendQuery(reqToApi)
-    extract = wiki.extractQuery(reqToApi)
-    _dict = {"request" : extract,
-            "address" : address}
-    return render_template('result.html', query=_dict["request"],
-                                          label=_dict["address"])
+    place = g.GooglePlace()
+    req = request.form['question']
+    address = place.sendQuery(req)
+    extract = wiki.extractQuery(req)
+    _dict = {"extract": extract, "address": address[0], "position": address[1]}
+    return jsonify(query=extract, label=address)
+

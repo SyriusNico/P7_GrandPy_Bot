@@ -8,15 +8,22 @@ a {
 	outline: none;
 }
 
+.link {
+	font-weight: bold;
+}
+
+
+
 .container {
 	display: grid;
 	justify-content: center;
-	grid-template-rows: 2fr 7fr 1fr;
+	grid-template-rows: repeat(4, minmax(100px, auto));
 	grid-template-columns: repeat(3, 1fr);
 	grid-gap: 10px;
 	grid-template-areas: 
-		"logo header header"
-		"content content sidebar"
+		"header header header"
+		"content content content"
+		"card card card"
 		"footer footer footer";
 }
 
@@ -30,33 +37,21 @@ a {
 
 }
 
+
 .content {
+	text-align: center;
 	grid-area: content;
+}
 
-	display: grid;
-	align-content: center;
-	grid-template-areas: 
-		"query"
-		"response"
-		"anecdote";
+.card {
+	grid-area: card;
 
 }
 
-.query {
-	grid-area: query;
-}
-
-.response {
-	grid-area: response;
-}
-
-.anecdote {
-	grid-area: anecdote;
-}
-
-.sidebar {
-	grid-area: sidebar;
-
+#map {
+    width: 100%;
+    height: 400px;
+    background-color: grey;
 }
 
 
@@ -68,13 +63,15 @@ a {
 .box {
 
 	text-align: center;
-	font-family: 'Sofia';
-	justify-items: center;
+	font-family: sans-serif;
 	width: 100%;
 	border: 2px;
 }
 
-
+.result {
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
 
 @media screen and (max-width: 768px) {
 
@@ -86,7 +83,7 @@ a {
 			"logo" 
 			"header"
 			"content"
-			"sidebar"
+			"card"
 			"footer";
 	}
 
@@ -102,8 +99,8 @@ a {
 		grid-area: content;
 	}
 
-	.sidebar {
-		grid-area: sidebar;
+	.card {
+		grid-area: card;
 	}
 
 	.footer {
