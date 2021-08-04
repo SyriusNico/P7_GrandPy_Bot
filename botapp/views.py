@@ -1,10 +1,12 @@
 #! /usr/bin/env python
 # coding : utf-8
 from flask import Flask , render_template, request, url_for, jsonify
+
+from botapp import app
 from botapp.api import mediaWiki as m
 from botapp.api import googlePlace as g
 
-app = Flask(__name__)
+
 
 @app.route("/")
 def index():

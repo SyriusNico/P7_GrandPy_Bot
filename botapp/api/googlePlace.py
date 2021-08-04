@@ -1,8 +1,9 @@
 #! /usr/bin/env python
 # coding : utf-8
 import requests
+
 import config
-from botapp.api import stopwords as s
+from . import stopwords as s
 
 
 
@@ -23,7 +24,7 @@ class GooglePlace():
 		text = ' '.join([word for word in parseRequet if word not in s.stopwords])
 		return text
 
-	def __setQuery(self, request):
+	def setQuery(self, request):
 
 		self.query = newString = self.parseText(request)
 		return self.query
@@ -31,10 +32,15 @@ class GooglePlace():
 	def sendQuery(self, request):
 
 		try:
-			self.params['input'] = self.__setQuery(request)
+			self.params['input'] = self.setQuery(request)
 			req = requests.get(self.url, self.params)
 			address = req.json()["candidates"][0]["formatted_address"]
 			latlng = req.json()["candidates"][0]["geometry"]["location"]
+			print(req.json())
 			return address, latlng
 		except IndexError:
 			return "Je n'ai rien trouvé désolé, essais d'ajouter le nom d'une ville, d'un pays."
+
+
+# g = GooglePlace()
+# g.sendQuery("zidane")

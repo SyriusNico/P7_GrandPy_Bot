@@ -2,7 +2,7 @@
 # coding : utf-8
 import requests 
 import pprint
-import botapp.api.stopwords as s
+from . import stopwords as s
 
 class MediaWiki():
 
@@ -59,6 +59,7 @@ class MediaWiki():
 			req = requests.get(self.url, self.extractParams)
 			responses = req.json()["query"]["pages"]
 			extract = list(responses.values())[0]['extract']
+	
 			return extract
 		except:
 			return "Bon ok ok ! Je n'ai pas d'anecdote sur cet endroit \
@@ -66,3 +67,8 @@ class MediaWiki():
 			Je ne connais pas la moitié d’entre vous autant que je le voudrais, \
 			mais j’aime moins la moitié d’entre \
 			vous à moitié moins que vous ne le méritez !"
+
+
+# wiki = MediaWiki()
+
+# wiki.sendQuery("zidane")

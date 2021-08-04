@@ -1,4 +1,4 @@
-
+// Pure javascript code that initializes the map
 function initMap(lat=16.2333, lng=-61.5167) {
   var newPos = document.getElementById('query--form')
   var center = { lat: lat, lng: lng };
@@ -14,6 +14,7 @@ function initMap(lat=16.2333, lng=-61.5167) {
 
 };
 
+// Using jQuery to get value from the form and send it to my python code
 $("#query--form").submit(function(event) {
   var $map = map
   // Stop form from submitting normally
