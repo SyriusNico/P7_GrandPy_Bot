@@ -59,16 +59,10 @@ class MediaWiki():
 			req = requests.get(self.url, self.extractParams)
 			responses = req.json()["query"]["pages"]
 			extract = list(responses.values())[0]['extract']
-	
-			return extract
+			return title, extract
 		except:
 			return "Bon ok ok ! Je n'ai pas d'anecdote sur cet endroit \
 			mais aujourd’hui, et bien c’est le jour de mon 111e anniversaire ! \
 			Je ne connais pas la moitié d’entre vous autant que je le voudrais, \
 			mais j’aime moins la moitié d’entre \
 			vous à moitié moins que vous ne le méritez !"
-
-
-# wiki = MediaWiki()
-
-# wiki.sendQuery("zidane")

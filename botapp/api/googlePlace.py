@@ -36,11 +36,6 @@ class GooglePlace():
 			req = requests.get(self.url, self.params)
 			address = req.json()["candidates"][0]["formatted_address"]
 			latlng = req.json()["candidates"][0]["geometry"]["location"]
-			print(req.json())
 			return address, latlng
 		except IndexError:
 			return "Je n'ai rien trouvé désolé, essais d'ajouter le nom d'une ville, d'un pays."
-
-
-# g = GooglePlace()
-# g.sendQuery("zidane")

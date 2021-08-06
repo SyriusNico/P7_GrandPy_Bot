@@ -43,3 +43,17 @@ def test_send_query_google_return_place(monkeypatch):
 
 def test_parse_text():
 	assert "Paris" not in s.stopwords
+
+def test_sentence_contain_stopwords():
+
+	google = g.GooglePlace()
+
+	whereIsOpenclassrooms = google.parseText("Pourrais-tu me donner l'adresse \
+											du studio de Openclassrooms ?")
+
+	restaurantBègle = google.parseText("Je cherche l'adresse d'un \
+										bon restaurant à Bègle")
+
+	assert whereIsOpenclassrooms == "Pourrais-tu donner studio Openclassrooms ?"
+
+	assert restaurantBègle == "Je cherche d'un restaurant Bègle"

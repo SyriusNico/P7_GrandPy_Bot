@@ -20,5 +20,4 @@ def result():
     address = place.sendQuery(req)
     extract = wiki.extractQuery(req)
     _dict = {"extract": extract, "address": address[0], "position": address[1]}
-    return jsonify(query=extract, label=address)
-
+    return jsonify(title=extract[0], query=extract[1], label=address)

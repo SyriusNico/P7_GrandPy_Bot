@@ -40,7 +40,7 @@ $("#query--form").submit(function(event) {
     $(".result").append("<h1>Voici l'adresse que tu cherchais : </h1>", address);  
     $(".result").append("<h1>Est-ce que tu savais que ...</h1>", text);
     $(".result").append($("<br><a class='link'>Pour plus d'informations</a><br>"));
-    $(".link").attr({href:'https://fr.wikipedia.org/wiki/' + term, target: '_blank'});
+    $(".link").attr({href:'https://fr.wikipedia.org/wiki/' + data.title, target: '_blank'});
 
   });
 });
