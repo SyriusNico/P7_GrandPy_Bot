@@ -2,7 +2,7 @@
 # coding : utf-8
 import requests
 
-import config
+import setup
 from . import stopwords as s
 
 
@@ -17,7 +17,7 @@ class GooglePlace():
 						"inputtype" : "textquery",
 						"language" : "fr",
 						"fields" : "formatted_address,geometry",
-						"key" : config.API_KEY}
+						"key" : setup.API_KEY}
 
 	def parseText(self, request):
 		parseRequet = request.split()
