@@ -1,1 +1,1 @@
-web: gunicorn botapp:run
+web: gunicorn P7_GrandPy_Bot:run
