@@ -2,5 +2,6 @@
 
 # GrandPy Bot Project
 ```
-you can follow the progress of the project on https://trello.com/b/G0P0j4Tj
+
+A small application that allows you to have the address you are looking for and a little anecdotal about this address.
 ```
