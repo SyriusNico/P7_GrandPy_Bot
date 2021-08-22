@@ -12,7 +12,7 @@ from botapp.api import googlePlace as g
 def index():
     return render_template('index.html')
 
-@app.route("/", methods=['POST'])
+@app.route("/result", methods=['POST'])
 def result():   
     wiki = m.MediaWiki()
     place = g.GooglePlace()
